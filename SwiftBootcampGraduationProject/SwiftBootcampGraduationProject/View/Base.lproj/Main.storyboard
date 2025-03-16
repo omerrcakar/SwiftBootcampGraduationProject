@@ -1,28 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d1c-aC-Vdl">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Main View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainView" customModule="SwiftBootcampGraduationProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7z-Kd-WiC">
+                                <rect key="frame" x="151.66666666666666" y="710" width="90" height="84"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&gt; &gt; &gt; &gt;">
+                                    <fontDescription key="titleFontDescription" name="DiwanMishafi" family="Mishafi" pointSize="48"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="PyU-gq-gsw" kind="show" id="IlE-gK-M5q"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delivery-man" translatesAutoresizingMaskIntoConstraints="NO" id="WPn-DT-AjD">
+                                <rect key="frame" x="96.666666666666686" y="326" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="jhd-Dp-d6s"/>
+                                    <constraint firstAttribute="height" constant="200" id="vKh-4E-gtq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.60784313725490191" green="0.74509803921568629" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="WPn-DT-AjD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Kp-q0-VEh"/>
+                            <constraint firstItem="N7z-Kd-WiC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fmr-gt-A2v"/>
+                            <constraint firstItem="WPn-DT-AjD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ibw-pi-tiF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N7z-Kd-WiC" secondAttribute="bottom" constant="24" id="Isy-tm-6wv"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="XxY-xW-qTO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="997.70992366412213" y="-27.464788732394368"/>
+        </scene>
+        <!--Food List View-->
+        <scene sceneID="Jku-DE-hna">
+            <objects>
+                <viewController id="PyU-gq-gsw" customClass="FoodListView" customModule="SwiftBootcampGraduationProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KwM-xU-CU2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="geh-XK-r8P">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e2U-9H-Rfy">
+                                    <size key="itemSize" width="160" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="foodCell" id="ZG2-sF-IFT" customClass="FoodCell" customModule="SwiftBootcampGraduationProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Gi-Lx-gPZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pizza" translatesAutoresizingMaskIntoConstraints="NO" id="1em-js-9v0">
+                                                    <rect key="frame" x="30" y="8" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="VWk-Rc-7W1"/>
+                                                        <constraint firstAttribute="width" constant="100" id="YbY-NZ-h6o"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGf-0W-6Ra">
+                                                    <rect key="frame" x="16" y="116" width="43" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8f-v0-2nd">
+                                                    <rect key="frame" x="108" y="141" width="44" height="26"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="Add">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="10" name="Helvetica-Bold"/>
+                                                                    <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <color key="baseBackgroundColor" red="0.60784313729999995" green="0.74509803919999995" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="addFoodButton:" destination="ZG2-sF-IFT" eventType="touchUpInside" id="qrP-vP-vkT"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150 ₺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEy-NM-ECm">
+                                                    <rect key="frame" x="16" y="146" width="36" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="c8f-v0-2nd" firstAttribute="top" secondItem="1em-js-9v0" secondAttribute="bottom" constant="33" id="0pQ-Ga-qBF"/>
+                                                <constraint firstAttribute="trailing" secondItem="c8f-v0-2nd" secondAttribute="trailing" constant="8" id="2Kf-kl-2BS"/>
+                                                <constraint firstItem="qGf-0W-6Ra" firstAttribute="leading" secondItem="6Gi-Lx-gPZ" secondAttribute="leading" constant="16" id="3Va-V8-s48"/>
+                                                <constraint firstItem="qGf-0W-6Ra" firstAttribute="top" secondItem="1em-js-9v0" secondAttribute="bottom" constant="8" symbolic="YES" id="FjU-TZ-0vP"/>
+                                                <constraint firstItem="YEy-NM-ECm" firstAttribute="top" secondItem="qGf-0W-6Ra" secondAttribute="bottom" constant="9" id="MEx-v1-aBf"/>
+                                                <constraint firstItem="1em-js-9v0" firstAttribute="top" secondItem="6Gi-Lx-gPZ" secondAttribute="top" constant="8" id="mOz-23-JBe"/>
+                                                <constraint firstItem="YEy-NM-ECm" firstAttribute="leading" secondItem="6Gi-Lx-gPZ" secondAttribute="leading" constant="16" id="tJW-F1-F1A"/>
+                                                <constraint firstItem="1em-js-9v0" firstAttribute="centerX" secondItem="6Gi-Lx-gPZ" secondAttribute="centerX" id="yeg-ee-MoO"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="foodImage" destination="1em-js-9v0" id="vio-nu-zB0"/>
+                                            <outlet property="foodName" destination="qGf-0W-6Ra" id="KDv-ZE-4xf"/>
+                                            <outlet property="foodPrice" destination="YEy-NM-ECm" id="Fjw-WX-oON"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hIM-hr-2pU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="geh-XK-r8P" firstAttribute="top" secondItem="hIM-hr-2pU" secondAttribute="top" id="Q7D-XG-2uK"/>
+                            <constraint firstItem="hIM-hr-2pU" firstAttribute="bottom" secondItem="geh-XK-r8P" secondAttribute="bottom" id="QNo-vo-eA0"/>
+                            <constraint firstItem="geh-XK-r8P" firstAttribute="leading" secondItem="hIM-hr-2pU" secondAttribute="leading" id="fWe-6s-ujn"/>
+                            <constraint firstItem="hIM-hr-2pU" firstAttribute="trailing" secondItem="geh-XK-r8P" secondAttribute="trailing" id="tJH-j9-Abg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Lmd-Wa-jPb">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart.fill" catalog="system" id="yXf-1J-8QT">
+                            <color key="tintColor" red="0.60784313729999995" green="0.74509803919999995" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <segue destination="Cfr-jT-d35" kind="show" id="yGP-ah-c5s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="geh-XK-r8P" id="PWJ-FJ-Tx4"/>
+                        <segue destination="lzq-Wp-SDz" kind="show" identifier="toDetail" id="VY2-eX-tPm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3uy-Kk-VGx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803.8167938931297" y="-27.464788732394368"/>
+        </scene>
+        <!--Detail View-->
+        <scene sceneID="Gfv-bV-dtT">
+            <objects>
+                <viewController id="lzq-Wp-SDz" customClass="DetailView" customModule="SwiftBootcampGraduationProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ADJ-SY-c46">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BzK-db-Oye"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="f2H-y5-Cqm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mGT-2p-OLl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2683" y="-163"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FPc-eG-TNC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d1c-aC-Vdl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TRy-ja-GGh">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="B96-qV-z0S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVs-Tg-KIN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70.992366412213741" y="-27.464788732394368"/>
+        </scene>
+        <!--Cart View-->
+        <scene sceneID="K99-ti-aSa">
+            <objects>
+                <viewController id="Cfr-jT-d35" customClass="CartView" customModule="SwiftBootcampGraduationProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RbM-iz-imo">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="odT-2h-YNW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AeK-Z3-4iI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUa-3B-k0T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="539"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
+        <image name="delivery-man" width="512" height="512"/>
+        <image name="pizza" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
