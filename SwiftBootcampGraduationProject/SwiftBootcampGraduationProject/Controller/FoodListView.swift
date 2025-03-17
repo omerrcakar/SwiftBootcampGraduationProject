@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FoodListView: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var foodList: [Yemekler] = []
-    
+    var viewModel = FoodListViewModel()
     
     // Yatay Kaydırma
     let scrollView = UIScrollView()
@@ -31,7 +32,6 @@ class FoodListView: UIViewController {
         super.viewDidLoad()
         
         
-        
         setupScrollView()
         setupCategories()
         
@@ -39,20 +39,17 @@ class FoodListView: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        let y1 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y2 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y3 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y4 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y5 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y6 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y7 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y8 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y9 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y10 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y11 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
-        let y12 = Yemekler(yemek_id: "1", yemek_adi: "Pizza", yemek_resim_adi: "pizza", yemek_fiyat: "150")
         
-        foodList.append(contentsOf: [y1,y2,y3,y4,y5,y6,y7,y8,y9,y10,y11,y12])
+        // MVVM için RxSwift ile veri değişimi izlendiği yer
+        _ = viewModel.yemeklerListesi.subscribe(onNext: { liste in
+            self.foodList = liste
+            
+            // Arayğze verileri yüklerken asenkron yani performanslı çalışmamızı sağlar
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
+        })
         
         
         
@@ -84,7 +81,14 @@ extension FoodListView: UICollectionViewDelegate, UICollectionViewDataSource, Hu
         
         // Hücremizi tanımladık
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodCell", for: indexPath) as! FoodCell
-        cell.foodImage.image = UIImage(named: food.yemek_resim_adi!)
+        
+        // Kingfisher Yemek foto alma
+        if let url = URL(string: "http://kasimadalan.pe.hu/yemekler/resimler/\(food.yemek_resim_adi!)"){
+            DispatchQueue.main.async {
+                cell.foodImage.kf.setImage(with: url)
+            }
+        }
+        
         cell.foodName.text = food.yemek_adi
         cell.foodPrice.text = "\(food.yemek_fiyat!) ₺"
         
